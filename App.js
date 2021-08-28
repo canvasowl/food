@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import yelp from "./api/yelp";
 import CardList from "./components/cardList";
@@ -20,18 +20,26 @@ const DATA = [
 ];
 
 export default function App() {
+  const [businesses, setBusinesses] = useState([]);
+
   const getBusinesses = async (location) => {
     const response = await yelp.get(`search?location=${location}`);
-    console.log(response.data);
+    setBusinesses(response.data.businesses);
     return response;
   };
 
-  getBusinesses("NYC");
+  useEffect(() => {
+    businesses.length === 0 ? getBusinesses("NYC") : null;
+  }, [businesses]);
+
+  if (businesses.length === 0) {
+    return <Text>Loading...</Text>;
+  }
 
   return (
     <View style={styles.container}>
-      <CardList title="Title Prop" data={DATA} />
-      <CardList title="Title Prop" data={DATA} />
+      <CardList title="Popular" data={businesses} />
+      <CardList title="For you" data={DATA} />
     </View>
   );
 }

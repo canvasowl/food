@@ -2,14 +2,14 @@ import React from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import Card from "./card";
 
-const renderItem = ({ item }) => <Card />;
+const renderItem = ({ item }) => <Card business={item} />;
 
-const CardList = (props) => {
+const CardList = ({ title, data }) => {
   return (
     <View style={styles.cardListContainer}>
-      <Text>{props.title}</Text>
+      <Text style={styles.title}>{title}</Text>
       <FlatList
-        data={props.data}
+        data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         horizontal={true}
@@ -19,8 +19,12 @@ const CardList = (props) => {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: "600",
+    textTransform: "capitalize",
+  },
   cardListContainer: {
-    backgroundColor: "green",
     paddingTop: 70,
     paddingLeft: 10,
     paddingBottom: 10,
