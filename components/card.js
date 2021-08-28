@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     borderTopRightRadius: 6,
     borderTopLeftRadius: 6,
+    marginRight: 10,
+    marginTop: 10,
   },
   image: {
     backgroundColor: "blue",
