@@ -1,16 +1,20 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 
 const Card = ({ business }) => {
   return (
     <View style={styles.card}>
-      <View style={styles.image}></View>
+      <View style={styles.imageWrapper}>
+        <Image source={{ uri: business.image_url }} style={styles.image} />
+      </View>
       <View style={styles.details}>
         <Text style={styles.title}>{business.name}</Text>
       </View>
     </View>
   );
 };
+
+const borderRadius = 6;
 
 const styles = StyleSheet.create({
   card: {
@@ -19,15 +23,21 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 10,
   },
-  image: {
-    backgroundColor: "blue",
+  imageWrapper: {
+    backgroundColor: "red",
     flex: 8,
-    borderTopLeftRadius: 6,
-    borderTopRightRadius: 6,
+    borderTopLeftRadius: borderRadius,
+    borderTopRightRadius: borderRadius,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    borderTopLeftRadius: borderRadius,
+    borderTopRightRadius: borderRadius,
   },
   details: {
     padding: 10,
-    backgroundColor: "pink",
+    backgroundColor: "#eeeeee",
     flex: 3,
   },
   title: {

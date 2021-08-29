@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
-import Card from "./card";
+import Card from "./Card";
 
 const renderItem = ({ item }) => <Card business={item} />;
 
