@@ -9,6 +9,9 @@ const Card = ({ business }) => {
       </View>
       <View style={styles.details}>
         <Text style={styles.title}>{business.name}</Text>
+        <Text>
+          {business.rating} Stars, {business.review_count} Reviews
+        </Text>
       </View>
     </View>
   );

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     textTransform: "capitalize",
   },
   cardListContainer: {
-    paddingTop: 70,
+    paddingTop: 10,
     paddingLeft: 10,
     paddingBottom: 10,
   },
