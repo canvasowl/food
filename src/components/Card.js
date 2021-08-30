@@ -1,19 +1,22 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
+import { withNavigation } from "react-navigation";
 
-const Card = ({ business }) => {
+const Card = ({ business, navigation }) => {
   return (
-    <View style={styles.card}>
-      <View style={styles.imageWrapper}>
-        <Image source={{ uri: business.image_url }} style={styles.image} />
+    <TouchableOpacity onPress={() => navigation.navigate("BusinessScreen")}>
+      <View style={styles.card}>
+        <View style={styles.imageWrapper}>
+          <Image source={{ uri: business.image_url }} style={styles.image} />
+        </View>
+        <View style={styles.details}>
+          <Text style={styles.title}>{business.name}</Text>
+          <Text>
+            {business.rating} Stars, {business.review_count} Reviews
+          </Text>
+        </View>
       </View>
-      <View style={styles.details}>
-        <Text style={styles.title}>{business.name}</Text>
-        <Text>
-          {business.rating} Stars, {business.review_count} Reviews
-        </Text>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -49,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default withNavigation(Card);

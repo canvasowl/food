@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import Card from "./Card";
 
-const renderItem = ({ item }) => <Card business={item} />;
-
 const CardList = ({ title, data }) => {
+  const renderItem = ({ item }) => <Card business={item} />;
+
   return (
     <View style={styles.cardListContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -12,7 +12,8 @@ const CardList = ({ title, data }) => {
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        horizontal={true}
+        horizontal
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
