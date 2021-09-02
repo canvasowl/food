@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
+import yelp from "../api/yelp";
 
-const BusinessScreen = () => {
+const BusinessScreen = ({ navigation }) => {
+  const [result, setResult] = useState(null);
+
+  const id = navigation.getParam("id");
+
+  const getResult = async (id) => {
+    const response = await yelp.get(`/${id}`);
+
+    console.log(response.data);
+    setResult(response.data);
+  };
+
+  useEffect(() => {
+    getResult(id);
+  }, []);
+
   return (
     <View>
-      <Text>business</Text>
+      <Text>{result.name}</Text>
     </View>
   );
 };

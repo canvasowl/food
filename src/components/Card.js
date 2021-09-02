@@ -4,7 +4,9 @@ import { withNavigation } from "react-navigation";
 
 const Card = ({ business, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("BusinessScreen")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("BusinessScreen", { id: business.id })}
+    >
       <View style={styles.card}>
         <View style={styles.imageWrapper}>
           <Image source={{ uri: business.image_url }} style={styles.image} />
