@@ -10,13 +10,21 @@ const BusinessScreen = ({ navigation }) => {
   const getResult = async (id) => {
     const response = await yelp.get(`/${id}`);
 
-    console.log(response.data);
+    console.log(response.data.name);
     setResult(response.data);
   };
 
   useEffect(() => {
     getResult(id);
   }, []);
+
+  if (result === null) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   return (
     <View>
